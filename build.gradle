@@ -26,15 +26,15 @@ publishing {
 }
 
 bintray {
-    user = ''
-    key = ''
+    user = 'henouille'
+    key = '591f88e836a690301fb9e3a6518d8e28d8aa6b0c'
     publications = ['helloPublication']
     publish = true
     pkg {
-        repo = 'wondeful'
-        name = 'somerandomname'
+        repo = 'Hello'
+        name = 'fr.henouille.hello'
         licenses = ['CopyFree']
-        vcsUrl = 'https://github.com/newfivefour/jerseyjsonwadl.git'
+        vcsUrl = 'https://github.com/AymericHenouille/Hello.git'
         version {
             name = project.version
             desc = project.description
