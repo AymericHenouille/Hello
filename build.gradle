@@ -1,0 +1,44 @@
+plugins {
+    id "com.jfrog.bintray" version "1.7"
+    id 'java'
+    id 'maven'
+    id 'maven-publish'
+}
+
+archivesBaseName = 'hello-anyone'
+group = 'fr.henouille'
+version = '0.0.1'
+description = 'Say hello to anyone.'
+
+repositories {
+    jcenter()
+}
+
+publishing {
+    publications {
+        helloPublication(MavenPublication) {
+            from components.java
+            groupId = project.group
+            artifactId = project.archivesBaseName
+            version = project.version
+        }
+    }
+}
+
+bintray {
+    user = ''
+    key = ''
+    publications = ['helloPublication']
+    publish = true
+    pkg {
+        repo = 'wondeful'
+        name = 'somerandomname'
+        licenses = ['CopyFree']
+        vcsUrl = 'https://github.com/newfivefour/jerseyjsonwadl.git'
+        version {
+            name = project.version
+            desc = project.description
+            released  = new Date()
+        }
+    }
+}
