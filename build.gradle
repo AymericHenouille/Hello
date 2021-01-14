@@ -1,8 +1,6 @@
 plugins {
-    id "com.jfrog.bintray" version "1.7"
-    id 'java'
+    id 'java-library'
     id 'maven'
-    id 'maven-publish'
 }
 
 archivesBaseName = 'hello-anyone'
@@ -14,31 +12,11 @@ repositories {
     jcenter()
 }
 
-publishing {
-    publications {
-        helloPublication(MavenPublication) {
-            from components.java
-            groupId = project.group
-            artifactId = project.archivesBaseName
-            version = project.version
-        }
-    }
+dependencies {
+    testCompile 'org.junit.jupiter:junit-jupiter-api:5.+'
+    testRuntime 'org.junit.jupiter:junit-jupiter-engine:5.4.2'
 }
 
-bintray {
-    user = 'henouille'
-    key = '591f88e836a690301fb9e3a6518d8e28d8aa6b0c'
-    publications = ['helloPublication']
-    publish = true
-    pkg {
-        repo = 'Hello'
-        name = 'fr.henouille.hello'
-        licenses = ['CopyFree']
-        vcsUrl = 'https://github.com/AymericHenouille/Hello.git'
-        version {
-            name = project.version
-            desc = project.description
-            released  = new Date()
-        }
-    }
+test {
+    useJUnitPlatform()
 }
